@@ -1,0 +1,61 @@
+'''Sayi Tahmin
+		-Kullanicidan aklindan 0-100 araliginda bir sayi tutmasini isteyin.
+		-Yazdiginiz kod ile bu sayiyi tahmin etmeye calisin.
+		-Tahmin sonucunda, kullanicidan alacaginiz input, pc'nin tahmin ettigi sayi
+		 kullanicinin belirledigi
+		 sayidan buyukse kullanici daha dusuk sayi tahmin etmelisin manasinda "-" seklinde olsun,
+		  pc'nin tahmin
+		 ettigi sayi kullanicinin belirledigi sayidan kucukse "+" seklinde olsun.
+		-Pc'nin tahmini dogru oldugunda da kullanicidan bunu belirtebilecegi bir input isteyin.
+		-Gelistireceginiz algoritma sayesinde kullanicinin belirledigi sayiyi
+		 en az hamlede bilmeye calisin :)
+
+		Ornek:
+
+			 Kullanicinin aklindan tuttugu sayi: 56 (kullanicidan bunun icin bir input almayacagiz sadece
+			 aklinizdan bir sayi belirlemis iseniz oyunumuza baslayabiliriz seklinde bir input alabiliriz.
+			 Yani belirledigi sayiyi sisteme girmesini istemiyoruz.)
+
+			 Pc'nin tahmini = 89
+			 Kullanicinin inputu = -
+			 Pc'nin tahmini = 45
+			 Kullanicinin inputu = +
+			 Pc'nin tahmini = 56
+			 Kullanicinin inputu = "Enter"'''
+import random
+print("""       NUMBER GUESSING GAME
+In this game rules are simple, 
+you are guessing a number between 0-100 in your mind and
+let me(the pc)to guess whats inside your brain. Lets start!!!""")
+cguess=random.randrange(100)
+print("Is it:",cguess)
+ustlimit=[100]
+altlimit=[0]
+while True:
+    enter = input("Enter '- or +' to help me to guess your number...If the guess is right press 'q'")
+    if enter=="q":
+        print("I can see that you imagined number {}.".format(cguess))
+        break
+    if enter == "-":
+        ustlimit.append(cguess)
+        ustlimit.sort()
+        cguess = random.randrange(altlimit[-1]+1, ustlimit[0])
+        print(cguess)
+        continue
+    elif enter == "+":
+        altlimit.append(cguess)
+        altlimit.sort()
+        cguess = random.randrange(altlimit[-1]+1, ustlimit[0])
+        print(cguess)
+        continue
+    elif not enter or enter=="-" or enter=="+" or enter=="q":
+        print("Please enter '-' or '+', If the guess is right press 'q'")
+        continue
+
+
+
+
+
+
+
+
